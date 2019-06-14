@@ -73,9 +73,7 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 /* Request 1: Create a new array called universities that contains all the universities in the graduates array.
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
-const universities = graduates.map(function (param){
-  return param.university
-})
+const universities = graduates.map(param => param.university)
 universities.sort();
 console.log(universities);
 
@@ -85,9 +83,7 @@ The resulting contact information should have a space between the first name and
 Name email@example.com
 
 Log the result of your new array. */
-const contactInfo = graduates.map(function(param){
-  return `${param.first_name} ${param.email}`
-})
+const contactInfo = graduates.map(param => `${param.first_name} ${param.email}`)
 console.log(contactInfo);
 
 
@@ -119,6 +115,7 @@ The zoo wants to display both the scientific name and the animal name in front o
 
 */
 const animalNames = [];
+zooAnimals.forEach(elem => animalNames.push(`Name: ${elem.animal_name}, Scientific: ${elem.scientific_name}`))
 console.log(animalNames);
 
 /* Request 2: .map()    
@@ -127,15 +124,15 @@ The zoos need a list of all their animal's names (names only, not scientific) co
 
 */
 
-const lowerCase = [];
+const lowerCase = zooAnimals.map(elem => elem.animal_name.toLowerCase())
 console.log(lowerCase); 
 
 /* Request 3: .filter() 
 
-The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
+The zoos are concerned about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
-const lowerPopulation = [];
+const lowerPopulation = zooAnimals.filter(elem => elem.population < 5)
 console.log(lowerPopulation);
 
 /* Request 4: .reduce() 
@@ -143,9 +140,10 @@ console.log(lowerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
+const populationTotal = zooAnimals.reduce(function(total, elem){
+  return total += elem.population;
+}, 0);
 console.log(populationTotal);
-
 
 /* 
 
